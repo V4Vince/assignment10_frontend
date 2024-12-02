@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { createNewCompany, createNewJobPost } from './api'
 import { useCompanies } from '../../Utilities/companiesProvider'
+import { useSelector } from 'react-redux'
 
 const NewJobForm = () => {
   
@@ -11,7 +12,8 @@ const NewJobForm = () => {
     // const [isValid, setIsValid] = useState({email: false, confirmPassword: false})
     const navigate = useNavigate();
     const location = useLocation(); 
-    const {companies, actions} = useCompanies()
+    // const {companies, actions} = useCompanies()
+    const companies = useSelector(state => state.companiesSlice.companies)
     
     const  handleChange = (e, field) => {
         //Grabs the user ID from the location state
